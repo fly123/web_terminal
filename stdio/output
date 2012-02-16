@@ -1,0 +1,34 @@
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+Welcome to Ubuntu 11.04 (GNU/Linux 2.6.38-11-generic i686)
+
+ * Documentation:  https://help.ubuntu.com/
+
+2 packages can be updated.
+0 updates are security updates.
+
+New release 'oneiric' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+You have new mail.
+stdin: is not a tty
+order:who
+/root
+fly123   tty7         2012-02-15 06:50 (:0)
+fly123   pts/0        2012-02-15 07:11 (:0.0)
+fly123   pts/1        2012-02-15 11:57 (:0.0)
+order:make
+/root
+make: *** No targets specified and no makefile found.  Stop.
+order:cd /usr
+/root
+order:ls
+/usr
+bin
+games
+include
+lib
+lib64
+local
+sbin
+share
+src
