@@ -1,11 +1,12 @@
 // JavaScript Document
 function postorder(type)
   {
+
       if ((type == "enter" && (event.keyCode==13)) || type == "click")
       {
-	  var order = document.getElementById("order").value;
+	  var order = document.getElementById("cmdline").value;
       //clear order
-      document.getElementById("order").value = '';
+      document.getElementById("cmdline").value = '';
 	  var ListNode = document.getElementById("response");
 	  var xmlHttp = new XMLHttpRequest();
 	  var url = "/receiveorder";

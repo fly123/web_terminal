@@ -1,24 +1,30 @@
 $def with(todos)
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>web super terminal</title>
-<script type="text/javascript" src="../static/js/postorder.js"></script>
-</head>
+  <head>
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>Web_Terminal</title>
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../static/js/postorder.js"></script>
+    <link href="../static/css/index_main.css" rel="stylesheet" type="text/css" /> 
+  </head>
+  <body>
+    <h1 id="title">Web_Terminal</h1>
+    
+	<div id="container">
+	  <output id="output"></output>
+      <div id="edited-line" class="edited-line">
+      		<div class="prompt">$todos</div>
+      </div>
+	  <div id="input-line" class="input-line">
+	    <div class="prompt">&gt;</div>
+        <div>
+        <input id="cmdline" type=text class="cmdline"  onkeydown='postorder("enter");'/>
+        </div>
+	  </div>
+	</div>
 
-<body>
-  <a href='/receiveorder?order=ls'>提交</a>
-  <a href='/clearall'>清屏</a>
-  <div>
-    <p>
-      <label>order：</label>
-      <input name="order" type=text id="order"  onkeydown='postorder("enter");' />
-    </p>
-  </div>
-  <input type="button" onclick='postorder("click")' value="提交" />
-  <div id="response" style="line-height: 5px;">
-  	$todos
-  </div>
-</body>
+
+  </body>
 </html>
