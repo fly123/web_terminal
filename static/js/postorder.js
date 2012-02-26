@@ -11,6 +11,7 @@ function postorder(type)
 	  var url = "/receiveorder";
 	  xmlHttp.onreadystatechange=function() {
 	  	ListNode.innerHTML = xmlHttp.responseText;
+	  	setscrolldown();
 	  	return true;
 	  	}
 	  xmlHttp.open("POST",url,true);
@@ -20,6 +21,9 @@ function postorder(type)
 	  
       }
   }
+  
+  
+  
 function setscrolldown(){
 var c = window.document.body.scrollHeight;
 window.scroll(0,c); 
