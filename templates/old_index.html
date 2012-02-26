@@ -1,0 +1,24 @@
+$def with(todos)
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>web super terminal</title>
+<script type="text/javascript" src="../static/js/postorder.js"></script>
+</head>
+
+<body>
+  <a href='/receiveorder?order=ls'>提交</a>
+  <a href='/clearall'>清屏</a>
+  <div>
+    <p>
+      <label>order：</label>
+      <input name="order" type=text id="order"  onkeydown='postorder("enter");' />
+    </p>
+  </div>
+  <input type="button" onclick='postorder("click")' value="提交" />
+  <div id="response" style="line-height: 5px;">
+  	$todos
+  </div>
+</body>
+</html>
