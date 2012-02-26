@@ -1,7 +1,6 @@
 // JavaScript Document
 function postorder(type)
   {
-
       if ((type == "enter" && (event.keyCode==13)) || type == "click")
       {
 	  var order = document.getElementById("cmdline").value;
@@ -16,6 +15,8 @@ function postorder(type)
 	  	}
 	  xmlHttp.open("POST",url,true);
 	  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
+
 	  xmlHttp.send("order="+order);
+	  
       }
   }

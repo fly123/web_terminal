@@ -29,7 +29,7 @@ class index:
             pass
         else:
             login()
-        return render.index('ok')
+        return render.index('')
 
 class receiveorder:
     def GET(self):
@@ -44,7 +44,7 @@ class receiveorder:
         i = web.input()
         if i.order == 'clear':
             clearoutput()
-            return 'ok'
+            return ''
         order = i.order + '\n'
         readshell(order)
         time.sleep(0.1)
@@ -54,7 +54,7 @@ class receiveorder:
 
 def readshell(order):
     global p
-    p.stdin.write('echo order:' + order + ' pwd\n')
+    p.stdin.write('echo "-->"' + order + ' pwd\n')
     time.sleep(0.2)
     p.stdin.write(order)
         
@@ -70,7 +70,7 @@ def response():
 class clearall:
     def GET(self):
         clearoutput()
-        return render.index('ok')
+        return render.index('')
 
 
 def clearoutput():

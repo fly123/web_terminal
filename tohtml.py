@@ -8,6 +8,6 @@ def txtTohtml():
     list_of_lines = output.readlines()
     string = ''
     for line in list_of_lines:
-        string += "<p><font size='1'>"  + line + "</font></p>"
+        string += line + "<br/>"
     output.close() 
     return string
