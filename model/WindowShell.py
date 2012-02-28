@@ -18,7 +18,6 @@ class WindowShell:
         self.subprocess = subprocess.Popen(['cmd'], stdin = subprocess.PIPE, 
                 stdout = output, stderr = output, shell = False) 
 
-        #这个也是具体而定
         self.user = 'fly123' 
         self.ttynum = 1         
         self.start_time = 0
