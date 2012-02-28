@@ -8,11 +8,9 @@ $def with(todos)
     <link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../static/js/postorder.js" ></script>
 	<script type="text/javascript" src="../static/js/jquery.js"></script>
-    <script type="text/javascript" src="../static/js/jquery.uploadify.js"></script>
-    <link href="../static/css/uploadify.css" type="text/css" media="screen" />
     <link href="../static/css/index_main.css" rel="stylesheet" type="text/css" /> 
   </head>
-  <body >
+  <body onLoad="platform();">
     <h1 id="title">Web_Terminal</h1>
     
 	<div id="container">
@@ -23,7 +21,7 @@ $def with(todos)
 	  <div id="input-line" class="input-line">
 	    <div class="prompt">&gt;</div>
         <div>
-        <input id="cmdline" type=text class="cmdline" autofocus onkeydown='postorder("enter");'/>
+        <input id="cmdline" type=text class="cmdline" autofocus onkeydown='postorder();'/>
         </div>
 	  </div>
 	</div>
