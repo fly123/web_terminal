@@ -8,6 +8,8 @@ import subprocess
 import time
 import sys
 import tohtml
+import platform
+
 
 p = 'nothing' 
 
@@ -29,7 +31,7 @@ class index:
             pass
         else:
             login()
-        return render.index('')
+        return render.index('system is ' +platform.system())
 
 class receiveorder:
     def GET(self):
