@@ -4,7 +4,6 @@
 
 
 from model.LinuxShell import *
-from model.WindowShell import *
 import web
 
 a = 'nothing'
