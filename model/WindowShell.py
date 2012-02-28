@@ -28,7 +28,7 @@ class WindowShell:
             utility.clearoutput(self.output)
             return render.index('') 
         order = order + '\n'
-        self.subprocess.stdin.write('echo "-->"' + order + ' echo %cd%\n')
+        #self.subprocess.stdin.write('echo "-->"' + order + ' echo %cd%\n')
         time.sleep(0.1)
         self.subprocess.stdin.write(order) 
 

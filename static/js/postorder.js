@@ -1,7 +1,27 @@
 // JavaScript Document
-function postorder(type)
+x=0;
+function platform()
+{
+	if ( x == 0 )
+	{
+		var ListNode = document.getElementById("response");
+		platform = ListNode.innerHTML;
+		if ( platform == "system is Windows" )
+		{
+			document.body.style.backgroundImage = "url(../static/resourse/microsoft-mascot.png)";
+			x = 1;
+		}
+		if ( platform == "system is Linux" )
+		{
+			document.body.style.backgroundImage = "url(../static/resourse/linux-mascot.png)";
+			x = 1;
+		}
+	}
+}
+
+function postorder()
   {
-      if ((type == "enter" && (event.keyCode==13)) || type == "click")
+      if (event.keyCode==13)
       {
 	  var order = document.getElementById("cmdline").value;
       //clear order
@@ -16,9 +36,7 @@ function postorder(type)
 	  	}
 	  xmlHttp.open("POST",url,true);
 	  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
-
 	  xmlHttp.send("order="+order);
-	  
       }
   }
   

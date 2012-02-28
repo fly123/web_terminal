@@ -24,7 +24,7 @@ class WindowShell:
         self.start_time = 0
 
     def receiveorder(self, order):
-        if order == 'clear':
+        if order == 'cls':
             utility.clearoutput(self.output)
             return render.index('') 
         order = order + '\n'
