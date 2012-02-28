@@ -3,9 +3,10 @@
 #date:2012/2/27
 
 import web
+import platform
 
 render = web.template.render('templates/')
-
+current_system = platform.system()
 
 urls = (
         '/', 'index',
