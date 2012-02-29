@@ -12,7 +12,10 @@ $def with(todos)
   </head>
   <body onLoad="platform();">
     <h1 id="title">Web_Terminal</h1>
-    
+    <form method="POST" enctype="multipart/form-data" action="">
+            <input type="file" id="fileUpload" style=" visibility:hidden; "  />
+            <input type="submit" class="text14-white-bold button-black" id="uploadButton" value="upload" onclick="fileUpload.click();" style="float:left; margin-top:5px; visibility:hidden;" />
+    </form>
 	<div id="container">
 	  <output id="output"></output>
       <div id="edited-line" class="edited-line">
