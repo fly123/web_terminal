@@ -13,7 +13,7 @@ import platform
 
 p = 'nothing' 
 
-
+     
 urls = (
   '/', 'index',
   '/receiveorder', 'receiveorder',
