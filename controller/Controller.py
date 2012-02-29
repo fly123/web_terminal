@@ -4,6 +4,8 @@
 
 
 from model.LinuxShell import *
+from model.WindowShell import *
+from config import *
 import web
 
 a = 'nothing'
@@ -31,7 +33,10 @@ class Controller:
     def maintain_connect(self, order):
         global a
         if (Controller.isLogin == 1):
-            a = LinuxShell()
+            if current_system == 'Linux':
+                a = LinuxShell()
+            elif current_system == 'Windows':
+			    a = WindowShell()
         a.receiveorder(order)
         time.sleep(0.1)
         return  a.response()
