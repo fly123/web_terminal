@@ -32,8 +32,8 @@ function postorder()
 	  }
 	  else if ( instruction.slice(0,8) == "download" )
 	  {
-		  site = "http://127.0.0.1:8080/";
-		  var xmlHttp = new xmlHttpRequest();
+		  var site = "http://127.0.0.1:8080/";
+		  var xmlHttp = new XMLHttpRequest();
 		  var url = "/receiveorder";
 		  xmlHttp.onreadystatechange = function()
 		  {
@@ -43,7 +43,7 @@ function postorder()
 		  }
 		  xmlHttp.open("POST",url,true);
 		  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		  xmlHttp.send("order="+instruction.slice(9,instruction.length));
+		  xmlHttp.send("order="+instruction);
 	  }
 	  else
 	  {
