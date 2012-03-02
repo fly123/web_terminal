@@ -34,13 +34,7 @@ function postorder()
 	  }
 	  else if ( instruction.slice(0,8) == "download" )
 	  {
-<<<<<<< HEAD
 		  site = getIPAdress();
-=======
-		  var site = "http://127.0.0.1:8080/";
-		  var xmlHttp = new XMLHttpRequest();
-		  var url = "/receiveorder";
->>>>>>> 6cf5351618613205374d4c754b17647c83feb812
 		  xmlHttp.onreadystatechange = function()
 		  {
                 
@@ -51,12 +45,6 @@ function postorder()
               }
 			return true;
 		  }
-<<<<<<< HEAD
-=======
-		  xmlHttp.open("POST",url,true);
-		  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		  xmlHttp.send("order="+instruction);
->>>>>>> 6cf5351618613205374d4c754b17647c83feb812
 	  }
 	  else
 	  {
