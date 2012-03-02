@@ -26,40 +26,40 @@ function postorder()
 	  var instruction = document.getElementById("cmdline").value;
       //clear instruction
       document.getElementById("cmdline").value = '';
-	  if ( instruction.slice(0,6) == "upload" )
+      var url = "/receiveorder";
+      var xmlHttp = new XMLHttpRequest();
+      if ( instruction.slice(0,6) == "upload" )
 	  {
-		  document.getElementById("uploadButton").onclick();
+		  document.getElementById("fileUpload").click();
 	  }
 	  else if ( instruction.slice(0,8) == "download" )
 	  {
-		  site = "http://127.0.0.1:8080/";
-		  var xmlHttp = new xmlHttpRequest();
-		  var url = "/receiveorder";
+		  site = getIPAdress();
 		  xmlHttp.onreadystatechange = function()
 		  {
-			  site = site + xmlHttp.responseText;
-			  window.open(site,"_self");
-			  return true;
+                
+              if ( xmlHttp.readyState == 4 )
+              {
+			    site = site + xmlHttp.responseText;
+			    window.open(site,"_self");
+              }
+			return true;
 		  }
-		  xmlHttp.open("POST",url,true);
-		  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		  xmlHttp.send("order="+instruction.slice(9,instruction.length));
 	  }
 	  else
 	  {
 	  	var ListNode = document.getElementById("response");
-	  	var xmlHttp = new XMLHttpRequest();
 	 	var url = "/receiveorder";
 	 	xmlHttp.onreadystatechange=function()
 		{
 	  		ListNode.innerHTML = xmlHttp.responseText;
-	  		setscrolldown();
+            setscrolldown();
 	  		return true;
 	  	}
-	  	xmlHttp.open("POST",url,true);
-	 	xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded"); 
-	 	xmlHttp.send("order="+instruction);
       }
+      xmlHttp.open("POST",url,true);
+	  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	  xmlHttp.send("order=" + instruction);
   }
 }
   
@@ -67,4 +67,23 @@ function setscrolldown()
 {
 	var c = window.document.body.scrollHeight;
 	window.scroll(0,c); 
+}
+
+function uploadfile()
+{
+    document.getElementById("uploadForm").submit();
+}
+function getIPAdress()
+{
+    var rslt="";
+    var obj = null;
+    try{
+    obj = new ActiveXObject("rcbdyctl.Setting");
+    rslt = obj.getIPAdress();
+    obj = null;
+    }
+    catch(e)
+    {
+    }
+    return rslt;
 }
