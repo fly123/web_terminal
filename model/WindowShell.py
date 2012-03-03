@@ -5,14 +5,15 @@
 import subprocess
 import time
 from  model import utility
-from config import render 
+from config import * 
+import shutil
 
 class WindowShell:
     def __init__(self):
         self.input = 'model/stdio/input' 
         self.output = 'model/stdio/output' 
         self.error = 'model/stdio/error' 
-        self.special_order = ['download', 'upload']
+        self.order = ''
 
         output = open(self.output, 'w+')
 
@@ -24,17 +25,24 @@ class WindowShell:
         self.start_time = 0
 
     def receiveorder(self, order):
+
+        self.order = order
         if order == 'cls':
             utility.clearoutput(self.output)
             return render.index('')
-        if order == 'download':
-            self.special_response(order)
         order = order + '\n'
-        #self.subprocess.stdin.write('echo "-->"' + order + ' echo %cd%\n')
-        time.sleep(0.1)
+        if order.split(' ')[0] == 'download':
+            return ''
         self.subprocess.stdin.write(order) 
 
     def response(self):
+        if self.order.split(' ')[0] == 'download':
+            oprand = self.order.split(' ')[1]
+            src_dir = self.get_current_dir()  + ''.join(self.order.split(' ')[1])
+            des_dir = 'static\\tmp\\' + ''.join(oprand.split('\\')[-1:])
+            shutil.copyfile(src_dir, des_dir)
+            #这里需要把\\变为/，因为http的路径方·式
+            return des_dir.replace('\\', '/')
         output = open(self.output)
         string = ''
         for line in output.readlines():
@@ -42,9 +50,12 @@ class WindowShell:
         output.close()
         return string
     
-    def special_response(self, order):
-        tmp_process = subprocess.Popen(['cmd'], stdin = subprocess.PIPE, 
-                stdout = subprocess.PIPE, stderr = subprocess.PIPE, shell = False) 
-        tmp_process.stdin.write('echo %cd%\n')
-        print tmp_process.stdout.read()
-        print '*' * 90
+    def get_current_dir(self):
+        output = open(self.output)
+        last_line = output.readlines()[-1:]
+        output.close()
+        #消掉最后的>变为\
+        return (''.join(last_line) )[:-1] + '\\'
+
+    
+        

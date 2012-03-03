@@ -41,7 +41,7 @@ class LinuxShell:
     def response(self):
         if self.order.split(' ')[0] == 'download':
             oprand = self.order.split(' ')[1]
-            src_dir= ''.join(self.get_current_dir())[:-1] + '/' + ''.join(self.order.split(' ')[1]) 
+            src_dir=self.get_current_dir()[:-1] + '/' + ''.join(self.order.split(' ')[1]) 
             des_dir = 'static/tmp/' + ''.join(oprand.split('/')[-1:])
             shutil.copyfile(src_dir, des_dir)
             return des_dir 
@@ -84,7 +84,7 @@ class LinuxShell:
         output = open(self.output)
         last_line = output.readlines()[-1:]
         output .close()
-        return last_line
+        return ''.join(last_line)
 
 
 
