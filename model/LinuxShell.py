@@ -5,7 +5,7 @@
 import subprocess
 import time
 from  model import utility
-from config import render 
+from config import * 
 import shutil
 
 class LinuxShell:
@@ -41,16 +41,19 @@ class LinuxShell:
     def response(self):
         if self.order.split(' ')[0] == 'download':
             oprand = self.order.split(' ')[1]
-            print list(oprand)
-            print self.get_current_dir()[:-1]  
-            print type(self.get_current_dir()[:-1])
             src_dir= ''.join(self.get_current_dir())[:-1] + '/' + ''.join(self.order.split(' ')[1]) 
             des_dir = 'static/tmp/' + ''.join(oprand.split('/')[-1:])
-            print '*' * 90
-            print src_dir
-            print des_dir
             shutil.copyfile(src_dir, des_dir)
             return des_dir 
+        elif self.order.split(' ')[0] == 'upload': 
+            x = web.input(fileUpload={})
+            if 'fileUpload' in x: # to check if the file-object is created
+                filedir = self.order.split(' ')[1] 
+                filepath=x.fileUpload.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
+                filename =filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
+                fout = open(filedir + '/' + filename,'w') # creates the file where the uploaded file should be stored
+                fout.write(x.fileUpload.file.read()) # writes the uploaded file to the newly created file.
+                fout.close() # closes the file, upload complete.            
         output = open(self.output)
         string = ''
         for line in output.readlines():
@@ -81,8 +84,6 @@ class LinuxShell:
         output = open(self.output)
         last_line = output.readlines()[-1:]
         output .close()
-        print '1'* 90
-        print last_line
         return last_line
 
 

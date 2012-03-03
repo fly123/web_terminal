@@ -13,7 +13,7 @@ $def with(todos)
   <body onLoad="platform();">
     <h1 id="title">Web_Terminal</h1>
     <form method="POST" id="uploadForm" target="ajaxSuport" enctype="multipart/form-data" action="" style="hidden" >
-            <input type="file" id="fileUpload" style=" visibility:hidden; " onchange="uploadfile()" />
+            <input type="file" id="fileUpload" style=" visibility:hidden; " onchange="uploadfile()" name="fileUpload"/>
             <input type="hidden" name="type" value="bat">
             <input type="hidden" name="num" value="1">
     </form>
