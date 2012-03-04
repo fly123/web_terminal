@@ -33,7 +33,7 @@ class LinuxShell:
         if self.order == 'clear':
             utility.clearoutput(self.output)
             return render.index('') 
-        self.subprocess.stdin.write('echo "-->"' + order  + '\n' + ' pwd\n')
+        self.subprocess.stdin.write('echo "-->"' + self.order  + '\n' + ' pwd\n')
         time.sleep(0.1)
         if self.order.split(' ')[0] == 'download' or self.order.split(' ')[0] == 'upload':
             return ''
