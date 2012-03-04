@@ -14,6 +14,7 @@ class LinuxShell:
         self.output = 'model/stdio/output' 
         self.error = 'model/stdio/error' 
         self.order = ''
+        self.web_input = ''
         
         output = open(self.output, 'w+')
 
@@ -25,18 +26,18 @@ class LinuxShell:
         self.ttynum = 1         
         self.start_time = 0
 
-    def receiveorder(self, order):
+    def receiveorder(self, web_input):
         
-        self.order = order
-        if order == 'clear':
+        self.web_input = web_input
+        self.order = web_input.order
+        if self.order == 'clear':
             utility.clearoutput(self.output)
             return render.index('') 
-        order = order + '\n'
-        self.subprocess.stdin.write('echo "-->"' + order + ' pwd\n')
+        self.subprocess.stdin.write('echo "-->"' + order  + '\n' + ' pwd\n')
         time.sleep(0.1)
-        if order.split(' ')[0] == 'download':
+        if self.order.split(' ')[0] == 'download' or self.order.split(' ')[0] == 'upload':
             return ''
-        self.subprocess.stdin.write(order) 
+        self.subprocess.stdin.write(self.order + '\n') 
 
     def response(self):
         if self.order.split(' ')[0] == 'download':
@@ -46,7 +47,7 @@ class LinuxShell:
             shutil.copyfile(src_dir, des_dir)
             return des_dir 
         elif self.order.split(' ')[0] == 'upload': 
-            x = web.input(fileUpload={})
+            x = self.web_input 
             if 'fileUpload' in x: # to check if the file-object is created
                 filedir = self.order.split(' ')[1] 
                 filepath=x.fileUpload.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.

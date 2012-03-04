@@ -20,47 +20,49 @@ function platform()
 }
 
 function postorder()
-  {
+{
       if (event.keyCode==13)
       {
-	  var instruction = document.getElementById("cmdline").value;
-      //clear instruction
-      document.getElementById("cmdline").value = '';
-      var url = "/receiveorder";
-      var xmlHttp = new XMLHttpRequest();
-      if ( instruction.slice(0,6) == "upload" )
-	  {
-		  document.getElementById("fileUpload").click();
-	  }
-	  else if ( instruction.slice(0,8) == "download" )
-	  {
-		  site = getIPAdress();
-		  xmlHttp.onreadystatechange = function()
-		  {
-                
-              if ( xmlHttp.readyState == 4 )
-              {
-			    site = site + xmlHttp.responseText;
-			    window.open(site,"_self");
-              }
-			return true;
-		  }
-	  }
-	  else
-	  {
-	  	var ListNode = document.getElementById("response");
-	 	var url = "/receiveorder";
-	 	xmlHttp.onreadystatechange=function()
-		{
-	  		ListNode.innerHTML = xmlHttp.responseText;
-            setscrolldown();
-	  		return true;
+		var instruction = document.getElementById("cmdline").value;
+      	//clear instruction
+      	document.getElementById("cmdline").value = '';
+      	if ( instruction.slice(0,6) == "upload" ) {
+				  document.getElementById("order").value = instruction;
+				  document.getElementById("fileUpload").click();
 	  	}
-      }
-      xmlHttp.open("POST",url,true);
-	  xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	  xmlHttp.send("order=" + instruction);
-  }
+	  	else
+	  	{
+			var url = "/receiveorder";
+			var xmlHttp = new XMLHttpRequest();
+			if ( instruction.slice(0,8) == "download" )
+			{
+			 	 site = getIPAdress();
+			 	 xmlHttp.onreadystatechange = function()
+				{    
+             	 	if ( xmlHttp.readyState == 4 )
+              		{
+			   			site = site + xmlHttp.responseText;
+			    		window.open(site,"_self");
+              		}
+					return true;
+				}
+			}
+	  		else
+	  		{
+	  			var ListNode = document.getElementById("response");
+	 			var url = "/receiveorder";
+	 			xmlHttp.onreadystatechange=function()
+				{
+	  				ListNode.innerHTML = xmlHttp.responseText;
+            		setscrolldown();
+	  				return true;
+	  			}
+      		}
+      		xmlHttp.open("POST",url,true);
+	 		xmlHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	 		xmlHttp.send("order=" + instruction);
+	  	}
+  	}
 }
   
 function setscrolldown()

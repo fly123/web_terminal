@@ -12,3 +12,6 @@ urls = (
         '/', 'index',
         '/receiveorder', 'controller.Controller.Controller'
         )
+
+#暂时先这样记下upload的路径
+UPLOAD_DIR = ' '

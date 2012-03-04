@@ -12,10 +12,9 @@ $def with(todos)
   </head>
   <body onLoad="platform();">
     <h1 id="title">Web_Terminal</h1>
-    <form method="POST" id="uploadForm" target="ajaxSuport" enctype="multipart/form-data" action="" style="hidden" >
-            <input type="file" id="fileUpload" style=" visibility:hidden; " onchange="uploadfile()" name="fileUpload"/>
-            <input type="hidden" name="type" value="bat">
-            <input type="hidden" name="num" value="1">
+    <form method="POST" id="uploadForm" target="ajaxSuport" enctype="multipart/form-data" action="/receiveorder" style="hidden" >
+            <input type="file" id="fileUpload"  name="fileUpload"  style=" visibility:hidden; " onchange="uploadfile()" />
+            <input type="hidden" id = "order" name="order" value="">
     </form>
 	<div id="container">
 	  <output id="output"></output>
