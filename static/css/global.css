@@ -1,0 +1,102 @@
+@charset "utf-8";
+/* CSS Document */
+
+.topbar
+{
+	width:1000px;
+	height:35px;
+	background-color:#FFF;
+	margin-bottom:10px;
+	border:1px none;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+.main
+{
+	margin:auto;
+	overflow:auto;
+}
+
+.left-frame
+{
+	min-height:10px;
+	float:left;
+	overflow:auto;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background-color:#dedede;
+}
+
+.explorer-item
+{
+	height:25px;
+	max-width:180px;
+	margin-top:5px;
+}
+
+.explorer-item-image
+{
+	height:20px;
+	width:20px;
+	vertical-align:middle;
+	margin-left:10px;
+	float:left;
+	overflow:auto;
+}
+
+.explorer-item-name
+{
+	vertical-align:middle;
+	overflow:hidden;
+	margin-left:5px;
+	float:left;
+}
+
+.right-frame
+{
+	min-height:10px;
+	float:right;
+	margin-left:10px;
+	overflow:auto;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	background-color:#9ee1d4;
+}
+
+.right-container
+{
+	margin:10px;
+	overflow:auto;
+}
+
+.icon-container
+{
+	width:80px;
+	height:110px;
+	margin:25px;
+}
+
+.file-icon-image-container
+{
+	width:80px;
+	height:80px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	overflow:hidden;
+}
+
+.file-icon-image
+{
+	width:80px;
+	height:80px;
+	vertical-align:top;
+}
+
+.file-icon-name
+{
+	width:60px;
+	margin:5px 10px 10px;
+	text-align:center;
+	overflow:hidden;
+}
