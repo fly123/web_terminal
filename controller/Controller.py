@@ -5,6 +5,7 @@
 
 from model.LinuxShell import *
 from model.WindowShell import *
+from model.WindowGUI import *
 from config import *
 import web
 
@@ -28,15 +29,16 @@ class Controller:
     
     def build_connect(self):
         self.connect_list.append('12')
-        connect_num += 1
+        self.connect_num += 1
 
     def maintain_connect(self, web_input):
         global a
         if (Controller.isLogin == 1):
-            if current_system == 'Linux':
-                a = LinuxShell()
-            elif current_system == 'Windows':
-                a = WindowShell()
+#            if current_system == 'Linux':
+#                a = LinuxShell()
+#            elif current_system == 'Windows':
+#                a = WindowShell()
+            a = WindowGUI()
         a.receiveorder(web_input)
         time.sleep(0.1)
         return  a.response()
