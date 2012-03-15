@@ -20,7 +20,6 @@ class WindowGUI:
         #Ϊ��upload
         self.web_input = ''
 
-        self.output_fd = open(self.output, 'w+')
 
     def receiveorder(self, web_input):
         return 0
@@ -55,26 +54,33 @@ class WindowGUI:
 #                fout.close() # closes the file, upload complete.   
 #
 #
-        self.traversal(self.desktop)
-        self.get_icon(self.desktop)
-        self.output_fd.close()
+        output = open(self.output, 'w+')
+        self.traversal(self.desktop, output)
+        #self.traversal('c:', output)
+        output.close()
         output = open(self.output)
         string = ''
         for line in output.readlines():
+            original = line.split("\t")[0] 
+            destination = original.replace("\\", '_').replace(":", "-")
+            type = line.split("\t")[1]
+            if type == 'file':
+                order = "model\\geticon.exe  " + original + '  ' + "static\\icon\\windows\\" + destination.replace("\\", '_') + ".ico"
+                os.system(order)
             string += line + "<br/>"
         output.close()
         return string
     
-    def traversal(self, direction):
+    def traversal(self, direction, output_fd):
         lst = os.listdir(direction)
         for it in lst:
             it = direction + '\\' + it 
             isFile = os.path.isfile(it)
             if isFile:
-                self.output_fd.write('\t' + it + '\tfile\n')
+                output_fd.write(it + '\tfile\t\n')
                 
             else:
-                self.output_fd.write('\t' + it + '\tfolders\n') 
+                output_fd.write(it + '\tfolders\t\n') 
                 #self.traversal(it)
 
     def get_disk_partition(self):
@@ -90,7 +96,7 @@ class WindowGUI:
         return _winreg.QueryValueEx(key, "Desktop")[0] 
     
     def get_icon(self, path):
-        
+        pass
 
     
         
