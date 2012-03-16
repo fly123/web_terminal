@@ -2,12 +2,15 @@
 #author:fly123
 #date:2012/2/27
 
-
-from model.LinuxShell import *
-from model.WindowShell import *
-from model.WindowGUI import *
 from config import *
 import web
+
+if current_system == 'Windows':
+    from model.WindowShell import *
+    from model.WindowGUI import *
+else:
+    from model.LinuxShell import *
+
 
 a = 'nothing'
 
