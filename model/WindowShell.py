@@ -7,6 +7,7 @@ import time
 from  model import utility
 from config import * 
 import shutil
+import codecs
 
 class WindowShell:
     def __init__(self):
@@ -61,10 +62,11 @@ class WindowShell:
                 fout.close() # closes the file, upload complete.   
 
 
-        output = open(self.output)
+        output = codecs.open(self.output, 'r', 'gbk')
         string = ''
         for line in output.readlines():
             string += line + "<br/>"
+        string = string.replace(u'<DIR>', u'DIR')
         output.close()
         return string
     

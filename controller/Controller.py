@@ -40,7 +40,7 @@ class Controller:
             
             #a = WindowGUI()
         a.receiveorder(web_input)
-        time.sleep(0.1)
+        time.sleep(0.2)
         return  a.response()
 
     def end_connect(self):

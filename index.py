@@ -8,6 +8,7 @@ import sqlite3
 import function
 
 
+
 app = web.application(urls, globals())
 
 
@@ -35,7 +36,7 @@ class index:
     def GET(self):
         #if function.IsLogged():
         global isLogin
-        if isLogin == 1:
+        if 1: #isLogin == 1:
             return render.index('system is ' + current_system) 
         return render.login(0)
     
