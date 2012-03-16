@@ -14,7 +14,6 @@ a = 'nothing'
 class Controller:
 
     connect_num = 0
-    isLogin = 0
 
 
     def POST(self):
@@ -25,20 +24,21 @@ class Controller:
         self.func_map = { '1' : self.end_connect }
         self.connect_list = ['first'] 
         
-        Controller.isLogin += 1
     
     def build_connect(self):
         self.connect_list.append('12')
         self.connect_num += 1
 
     def maintain_connect(self, web_input):
-        global a
-        if (Controller.isLogin == 1):
-#            if current_system == 'Linux':
-#                a = LinuxShell()
-#            elif current_system == 'Windows':
-#                a = WindowShell()
-            a = WindowGUI()
+        global a, isLogin 
+        if (a == 'nothing'):
+            if current_system == 'Linux':
+                a = LinuxShell()
+            elif current_system == 'Windows':
+                a = WindowShell()
+            
+            
+            #a = WindowGUI()
         a.receiveorder(web_input)
         time.sleep(0.1)
         return  a.response()

@@ -1,0 +1,35 @@
+$def with(todos)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Login Web_terminal</title>
+<style type="text/css">
+	@import url("../static/css/Login.css");
+</style>
+<script type="text/javascript" src="../static/js/Login.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<div id ="login" class="login">
+    	<form id="login-field" method="post" onsubmit="return FormExam(this)">
+        <h1>Login Web_terminal</h1>
+        <p>
+        	<label for="account">Account:&nbsp;</label>
+            	<input type="text" name="user" id="account" />
+            	<span class="text15-gray">Enter your account here.</span>
+        </p>
+        <p>
+        	<label for="password">Password:</label>
+            	<input type="password" name="passwd" id="password" />
+                <span class="text15-gray">Enter your password here.</span>
+        </p>
+        <input id="login-button" type="submit" class="button" value="Login" /><span id="fault-msg" class="text13">&nbsp;</span>
+        <div>
+        	<p id="accoutn-error" style="visibility:hidden;">Account error!</p>
+            <p id="password-error" style="visibility:hidden">Password error!</p>
+        </div>
+        </form>
+	</div>
+</body>
+</html>

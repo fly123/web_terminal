@@ -1,0 +1,18 @@
+@charset "utf-8";
+/* CSS Document */
+
+body
+{
+  font-size: 18px;
+  font-family: Inconsolata, monospace;
+  color: white;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
+  background-position: 90% 80%;
+  /*-webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;*/
+}
+#login-button{margin:0px 120px;}
+#login p{ font-size:16px;color:green;}
+.button{ font-size:14px;font-family:Inconsolata,monospace;padding:2px 10px;; background-color:#fff; border:1px solid #aaa; cursor:pointer; margin:0px; }
