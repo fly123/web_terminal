@@ -14,6 +14,7 @@ else:
 
 a = 'nothing'
 MODE = 'Normal'
+friends = []
 #IPADDR = '127.0.0.1:'
 
 class Controller:
@@ -42,8 +43,11 @@ class Controller:
             elif current_system == 'Windows':
                 a = WindowShell()
                 
-        if web_input.order == 'AllInOne':
+        if web_input.order.split(' ')[0] == 'AllInOne':
             MODE = 'AllInOne'
+            global friends
+            for it in web_input.order.split(' ')[1:]:
+                friends.append(it)
             return  'AllInOne'
         #MODE = 'AllInOne'    
         if MODE == 'AllInOne':
@@ -77,11 +81,15 @@ class Controller:
 #        pc.close()
         import urllib, urllib2
         #data = urllib.urlencode({'order': web_input.order, 'fileUpload' : (web_input.fileUpload.filename, web_input.fileUpload.file.read())}) 
+        global friends
         data = urllib.urlencode({'order' : web_input.order, 'fileUpload' : web_input.fileUpload})
-        request = urllib2.Request('http://127.0.0.1:1234/receiveorder', data) 
-        response = urllib2.urlopen(request)
-        file = response.read()
-        print file
+        
+        for it in friends:
+            url = u'http://' + it + u'/receiveorder'
+            request = urllib2.Request(url, data) 
+            response = urllib2.urlopen(request)
+            file = response.read()
+            print file
         
         
         
