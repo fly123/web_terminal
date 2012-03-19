@@ -51,14 +51,26 @@ class WindowShell:
 
         elif self.order.split(' ')[0] == 'upload': 
             x = self.web_input
-            #x = self.web_input(fileUpload={})
+            
             if 'fileUpload' in x: # to check if the file-object is created
                 filedir = self.order.split(' ')[1] 
-                filepath=x.fileUpload.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
-                filename =filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
-                #fout = open(filedir + '/' + filename,'w') # creates the file where the uploaded file should be stored
+                filename = ''
+                content = ''
+                if (type(x.fileUpload) == type('str')):
+                    tmpstr = x.fileUpload
+                    first = tmpstr.find('(')
+                    mytuple = eval(tmpstr[first:])
+                    
+                    filename = mytuple[1]
+                    content = mytuple[2]
+                    
+                else:
+                    filepath=x.fileUpload.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
+                    filename =filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
+                    content = x.fileUpload.file.read()
+                    
                 fout = open(filedir + '\\' + filename, 'w')
-                fout.write(x.fileUpload.file.read()) # writes the uploaded file to the newly created file.
+                fout.write(content) # writes the uploaded file to the newly created file.
                 fout.close() # closes the file, upload complete.   
 
 
