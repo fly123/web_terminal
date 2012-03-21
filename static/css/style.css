@@ -1,0 +1,21 @@
+body{background:no-repeat;}
+div.notepad{width:800px;height:500px; border:#000000 solid 1px; background:#FFF; overflow:hidden; position:relative;}
+div.notepad_header{ width:99%;height:20px; margin:5px ; border:solid 1px #999999; background: #999;padding:3px; overflow:hidden}
+div.notepad_header a{ position:absolute; right:7px;text-decoration:none}
+div.notepad_body{height:455px; width:787px; overflow:hidden}
+textarea.notepad{height:100%; width:98%; margin:0px 5px 5px 5px; background:#AFF}
+div.appbutton{width:78px;height:91px;position:relative;display:inline;}
+div.appbutton_icon{margin:2px 10px 2px 10px;width:58px;height:60px;background:no-repeat;background:#999999;}
+div.appbbutton_name{text-align:center;margin:8px 3px 2px 3px;-o-text-overflow: ellipsis;text-overflow:ellipsis;overflow:hidden;white-space: nowrap;width:72px;height:22px;font-size:12px;}
+a.applinkaddress{display:none}
+.ui-resizable { position: relative;}
+.ui-resizable-handle { position: absolute;font-size: 0.1px;z-index: 99999; display: block; }
+.ui-resizable-disabled .ui-resizable-handle, .ui-resizable-autohide .ui-resizable-handle { display: none; }
+.ui-resizable-n { cursor: n-resize; height: 7px; width: 100%; top: -5px; left: 0; }
+.ui-resizable-s { cursor: s-resize; height: 7px; width: 100%; bottom: -5px; left: 0; }
+.ui-resizable-e { cursor: e-resize; width: 7px; right: -5px; top: 0; height: 100%; }
+.ui-resizable-w { cursor: w-resize; width: 7px; left: -5px; top: 0; height: 100%; }
+.ui-resizable-se { cursor: se-resize; width: 12px; height: 12px; right: 1px; bottom: 1px; }
+.ui-resizable-sw { cursor: sw-resize; width: 9px; height: 9px; left: -5px; bottom: -5px; }
+.ui-resizable-nw { cursor: nw-resize; width: 9px; height: 9px; left: -5px; top: -5px; }
+.ui-resizable-ne { cursor: ne-resize; width: 9px; height: 9px; right: -5px; top: -5px;}
