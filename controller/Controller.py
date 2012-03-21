@@ -46,13 +46,23 @@ class Controller:
         if web_input.order.split(' ')[0] == 'AllInOne':
             MODE = 'AllInOne'
             global friends
-            for it in web_input.order.split(' ')[1:]:
-                friends.append(it)
+            
+            if len(web_input.order.split(' ')) >= 1:
+                for it in web_input.order.split(' ')[1:]:
+                    friends.append(it)
             return  'AllInOne'
+        
+        elif web_input.order.split(' ')[0] == 'OnlyOne':
+            MODE = 'OnlyOne'
+            global friends
+            friends = []
+            return 'OnlyOne'
+        
         #MODE = 'AllInOne'    
         if MODE == 'AllInOne':
             self.synchronously(web_input) 
             #a = WindowGUI()
+            
         a.receiveorder(web_input)
         time.sleep(0.2)
         return  a.response()
