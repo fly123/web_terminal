@@ -1,7 +1,7 @@
 var appnum=0;
 function open_app(app_div)
 {
-	var tmp=app_div;
+	
 	var path=$(app_div).attr('path');
 	var app_name=det_app(path)
 	switch (app_name)
@@ -39,14 +39,37 @@ function det_app(app_path)
 }
 function notepad_creat()
 {
-	$('#notepad_result').load('/static/tpls/notepad.html');
-	$('div.notepad').draggable();
-			
+	$('#notepad_result').load('/static/tpls/notepad.html');	
 }
 function notepad_close(notepad)
 {
 	var sel='#'+notepad.id;
 	$(sel).hide('fast');
+}
+function drag1(div)
+{
+	//$('div').not('#app1').css('z-index','-1');
+	$(div).draggable({
+		grid: [ 78, 91 ],
+	containment: "#app_board", 
+	scroll: false 
+	});
+	
+}
+function pad_drag(div)
+{
+	//$('div').not('#notepad1').css('z-index','-1');
+	$(div).draggable({
+	containment: "#notepad_result", 
+	scroll: false 
+	});
+	$(div).resizable({
+				maxHeight: 700,
+				maxWidth: 1300,
+				minHeight: 250,
+				minWidth: 300,
+				alsoResize: ".notepad_body",
+			});
 }
 /*
 function ajax_request()
@@ -63,7 +86,10 @@ function ajax_request()
 }*/
 $(document).ready(function(){
 	$('#app_board').load('/static/tpls/appbutton.html');
-	$('div.appbutton').draggable();
+	$('div.appbutton').draggable({
+	containment: "#app_board", 
+	scroll: false 
+	});
 	/*$('#test').click(
 		function()
 		{
