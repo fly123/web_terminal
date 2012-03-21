@@ -62,7 +62,7 @@ function ajax_request()
 	return false;
 }*/
 $(document).ready(function(){
-	$('#app_board').load('appbutton.html');
+	$('#app_board').load('/static/appbutton.html');
 	$('div.appbutton').draggable();
 	/*$('#test').click(
 		function()
