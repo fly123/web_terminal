@@ -39,7 +39,7 @@ function det_app(app_path)
 }
 function notepad_creat()
 {
-	$('#notepad_result').load('notepad.html');
+	$('#notepad_result').load('/static/tpls/notepad.html');
 	$('div.notepad').draggable();
 			
 }
@@ -62,7 +62,7 @@ function ajax_request()
 	return false;
 }*/
 $(document).ready(function(){
-	$('#app_board').load('/static/appbutton.html');
+	$('#app_board').load('/static/tpls/appbutton.html');
 	$('div.appbutton').draggable();
 	/*$('#test').click(
 		function()

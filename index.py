@@ -37,7 +37,8 @@ class index:
         #if function.IsLogged():
         global isLogin
         if 1: #isLogin == 1:
-            return render.index('system is ' + current_system) 
+            #return render.index('system is ' + current_system) 
+            return render.gui_index('')
         return render.login(0)
     
 class Login:
