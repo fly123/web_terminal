@@ -37,7 +37,7 @@ function det_apptype(app_path)
 }
 function det_appname(app_path)
 {
-	var app_name=app_path.substr(app_path.lastIndexOf("\\"));
+	var app_name=app_path.substr(app_path.lastIndexOf("\\")+1);
 	if(app_name)
 	{
 		return app_name;
@@ -46,19 +46,18 @@ function det_appname(app_path)
 }
 function notepad_creat(app_name)
 {
+	var id=next_notepad;
 	var url='/static/tpls/notepad.html';
-	if(next_notepad==0)
-	{
-		//$.
-		$('#notepad_result').load(url);	
-	}
-	else 
-	{
-		$('#notepad_result2').load('/static/tpls/notepad.html');	
-	}
-	var id="notepad"+next_notepad;
-	notepad_cache[next_notepad]=new notepad_class(id,"test context");
-	next_notepad++;
+	$.get(url,'',function(data,textStatus){
+			var id_notepad="id=\"notepad"+id+"\"";
+			data=data.replace("id=\"notepad\"",id_notepad);
+			var id_context="name=\"notepad_context"+id+"\"";
+			data=data.replace("id=\"notepad_context\"",id_context);
+			$('#notepad_result').append(data);
+			next_notepad++;
+			});	
+	notepad_cache[id]=new notepad_class(id,"test context");
+	//next_notepad++;
 }
 function notepad_close(notepad)
 {
