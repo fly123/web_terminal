@@ -1,46 +1,72 @@
-var appnum=0;
+var next_notepad=0;
+var notepad_cache=Array();
+function notepad_class(id,context)
+{
+	this.id=id;
+	this.contxt=context;
+}
 function open_app(app_div)
 {
-
 	var path=$(app_div).attr('path');
-	var app_name=det_app(path)
-	switch (app_name)
+	var app_type=det_apptype(path);
+	var app_name=det_appname(path);
+	switch (app_type)
 	{
+		case '':
 		case 'txt':{
-			notepad_creat();
+			notepad_creat(app_name);
 			break;}
+		default:{
+			alert('无法匹配文件格式');}
 	}
 }
-function det_app(app_path)
+function det_apptype(app_path)
 {
 	var tmp=Array();
-	var app_name;
+	var app_type;
 	tmp=app_path.split('.');
 	if(tmp[1])
 	{
-		app_name=tmp.pop();
+		app_type=tmp.pop();
+		return app_type;
 	}
 	else
 	{ 
-		return 'no app matched!!';
+		return false;
 	}
-	if(app_name.indexOf('txt')>-1)
-	{
-		return 'txt';
-	}
-	else 
+}
+function det_appname(app_path)
+{
+	var app_name=app_path.substr(app_path.lastIndexOf("\\"));
+	if(app_name)
 	{
 		return app_name;
 	}
+	else return false;
 }
-function notepad_creat()
+function notepad_creat(app_name)
 {
-	$('#notepad_result').load('/static/tpls/notepad.html');	
+	var url='/static/tpls/notepad.html';
+	if(next_notepad==0)
+	{
+		//$.
+		$('#notepad_result').load(url);	
+	}
+	else 
+	{
+		$('#notepad_result2').load('/static/tpls/notepad.html');	
+	}
+	var id="notepad"+next_notepad;
+	notepad_cache[next_notepad]=new notepad_class(id,"test context");
+	next_notepad++;
 }
 function notepad_close(notepad)
 {
-	var sel='#'+notepad.id;
-	$(sel).hide('fast');
+	var div=notepad.parentNode.parentNode;
+	var id=div.id;
+	var sel='#'+id;
+	$(sel).remove();
+	//$(sel).remove();
 }
 //未实现迭代前的实验函数
 function drag1(div)
@@ -72,8 +98,8 @@ function pad_drag(div)
 		});
 	}
 }
-/*
-function ajax_request()
+
+/*function ajax_request()
 {
 	if(window.XMLHttpRequest)
 	{

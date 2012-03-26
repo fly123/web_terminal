@@ -2,8 +2,11 @@ body{ background:no-repeat;width:1290px; height:700px; overflow:hidden;}
 div#app_board{ width:1200px; height:600px; position:absolute; left:0px; top:10px;}
 div#notepad_result{ width:100%; height:100%}
 div.notepad{width:800px;height:500px; border:#000000 solid 1px; background:#FFF; overflow:hidden; position: relative; display:block}
-div.notepad_header{ width:99%;height:20px; margin:5px ; border:solid 1px #999999; background: #999;padding:3px; overflow:hidden}
-div.notepad_header a{ position:absolute; right:7px;text-decoration:none}
+div.notepad_header{ width:99%;height:22px; margin:5px ; border:solid 1px #999999; background: #999;overflow:hidden; font-size:14px;  padding:1px;}
+div.notepad_header a{ width:20px; height:20px; position:absolute; right:5px; overflow:hidden; padding:1px;text-indent:-9999px;}
+div.notepad_header a:hover{ width:20px; height:20px; position:absolute; right:5px; overflow:hidden; padding:1px;text-indent:-9999px; background:#DFDFDF;}
+div.notepad_header span{ width:19px; height:18px; background: url(../icons/ui-icons_1.png); background-position:-95px -126px; text-indent:-9999px; display:block}
+div.notepad_header span:hover{ width:19px; height:18px; background: url(../icons/ui-icons_3.png);background-position:-95px -126px; text-indent:-9999px; display:block}
 div.notepad_body{height:455px; width:787px; overflow:hidden}
 textarea.notepad{height:100%; width:98%; margin:0px 5px 5px 5px; background:#AFF}
 div.appbutton{width:78px;height:91px;position:relative;display:inline; display:block}
